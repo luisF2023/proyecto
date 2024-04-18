@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Aseguradora</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Formulario de Aseguradora</h1>
+        <form action="guardar_datos.php" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required><br><br>
+
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" required><br><br>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="tipo_seguro">Tipo de Seguro:</label>
+            <select id="tipo_seguro" name="tipo_seguro" required>
+                <option value="auto">Seguro de Auto</option>
+                <option value="vida">Seguro de Vida</option>
+                <option value="hogar">Seguro de Hogar</option>
+            </select><br><br>
+
+            <label for="comentarios">Comentarios:</label><br>
+            <textarea id="comentarios" name="comentarios" rows="4" cols="50"></textarea><br><br>
+
+            <input type="submit" value="Guardar Datos">
+        </form>
+    </div>
+    
+
+    <div class="col-12">
+        
+        <div class="card px-6 py-6">
+            
+            <p-toast></p-toast>
+            <p-toolbar styleClass="mb-4">
+                <ng-template pTemplate="left">
+                    <div class="my-2">
+                        <button pButton pRipple label="Nuevo" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()"></button>
+                    </div>
+                </ng-template>
+            </p-toolbar>
+        </div>
+        <p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="Ubicación" [modal]="true" class="p-fluid">
+            <ng-template pTemplate="content">
+                <img [src]="'assets/demo/images/product/' + product.image" [alt]="product.image" width="150" class="mt-0 mx-auto mb-5 block shadow-2" *ngIf="product.image">
+            </ng-template>
+            <ng-template pTemplate="footer">
+                <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+                <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+            </ng-template>
+        </p-dialog>
+
+        <p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" [header]="getHeaderTitle()" [modal]="true" class="p-fluid" (onHide)="resetSteps()">
+            <ng-template pTemplate="content">
+                <img [src]="'assets/demo/images/product/' + product.image" [alt]="product.image" width="150" class="mt-0 mx-auto mb-5 block shadow-2" *ngIf="product.image">
+                    <div *ngIf="currentStep === 5">
+                        <div class="field">
+                            <label for="Garantia">Garantía</label>
+                            <p-dropdown [(ngModel)]="product.Garantia" inputId="Garantia" optionValue="label" [options]="statusesGarantia" placeholder="Select">
+                                <ng-template pTemplate="selectedItem">
+                                    <span *ngIf="product && product.Garantia" [class]="'product-badge status-' + product.Garantia.toLowerCase()">{{product.Garantia}}</span>
+                                </ng-template>
+                                <ng-template let-option pTemplate="item">
+                                    <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+                                </ng-template>
+                            </p-dropdown>
+                        </div>
+                        <div class="field">
+                            <label for="Fecha_inicioGarantia">Fecha de inicio de garantía</label>
+                            <input type="date" pInputText id="Fecha_inicioGarantia" [(ngModel)]="product.Fecha_inicioGarantia" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.Fecha_inicioGarantia}"/>
+                            <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.Fecha_inicioGarantia">Fecha de inicio de garantía es requerida.</small>
+                        </div>
+                        <div class="field">
+                            <label for="Fecha_finGarantia">Fecha de fin de garantía</label>
+                            <input type="date" pInputText id="Fecha_finGarantia" [(ngModel)]="product.Fecha_finGarantia" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.Fecha_finGarantia}"/>
+                            <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.Fecha_finGarantia">Fecha de fin de garantía es requerida.</small>
+                        </div>
+                    </div>
+                    <div *ngIf="currentStep === 6">
+                        <div class="field">
+                            <label for="ID_aseguradora">ID de la aseguradora</label>
+                            <input type="text" pInputText id="ID_aseguradora" [(ngModel)]="product.ID_aseguradora" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.ID_aseguradora}"/>
+                            <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.ID_aseguradora">ID de la aseguradora es requerido.</small>
+                        </div>
+                        <div class="field">
+                            <label for="ID_poliza">ID de la póliza</label>
+                            <input type="text" pInputText id="ID_poliza" [(ngModel)]="product.ID_poliza" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.ID_poliza}"/>
+                            <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.ID_poliza">ID de la póliza es requerido.</small>
+                        </div>
+                        <div class="field">
+                            <label for="Fecha_inicioGarantia">Fecha de inicio de garantía</label>
+                            <input type="date" pInputText id="Fecha_inicioGarantia" [(ngModel)]="product.Fecha_inicioGarantia" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.Fecha_inicioGarantia}"/>
+                            <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.Fecha_inicioGarantia">Fecha de inicio de garantía es requerida.</small>
+                        </div>
+                        <div class="field">
+                            <label for="Fecha_finGarantia">Fecha de fin de garantía</label>
+                            <input type="date" pInputText id="Fecha_finGarantia" [(ngModel)]="product.Fecha_finGarantia" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.Fecha_finGarantia}"/>
+                            <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.Fecha_finGarantia">Fecha de fin de garantía es requerida.</small>
+                        </div>
+                    </div>
+                    <div *ngIf="currentStep === 9">
+                        <div class="field">
+                            <input type="file" accept="image/*" id="photo" (change)="onFileChange($event)" class="mr-2 inline-block">
+                        </div>
+                        <div class="field">
+                            <img [src]="photoPreview" *ngIf="photoPreview" alt="Preview" width="200">
+                        </div>
+                    </div> 
+            </ng-template>
+            <ng-template pTemplate="footer">
+                <button pButton pRipple label="Atrás" icon="pi pi-angle-left" class="p-button-text" *ngIf="currentStep > 1" (click)="previousStep()"></button>
+                <button pButton pRipple label="Siguiente" icon="pi pi-angle-right" class="p-button-text" *ngIf="currentStep < totalSteps" (click)="nextStep()"></button>
+                <button pButton pRipple label="Guardar" icon="pi pi-check" class="p-button-text" *ngIf="currentStep === totalSteps" (click)="saveProduct()"></button>
+            </ng-template>
+        </p-dialog>
+    </div>
+</body>
+</html>

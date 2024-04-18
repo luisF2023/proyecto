@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Auditoría</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Formulario de Auditoría</h1>
+        <form action="procesar_datos.php" method="POST">
+            <label for="nombre_empresa">Nombre de la empresa:</label>
+            <input type="text" id="nombre_empresa" name="nombre_empresa" required><br><br>
+
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion"><br><br>
+
+            <label for="numero_identificacion">Número de identificación fiscal:</label>
+            <input type="text" id="numero_identificacion" name="numero_identificacion"><br><br>
+
+            <label for="sector_actividad">Sector de actividad:</label>
+            <input type="text" id="sector_actividad" name="sector_actividad"><br><br>
+
+            <label for="numero_empleados">Número de empleados:</label>
+            <input type="number" id="numero_empleados" name="numero_empleados"><br><br>
+
+            <label for="balance_general">Balance general:</label>
+            <input type="file" id="balance_general" name="balance_general"><br><br>
+
+            <label for="estado_resultados">Estado de resultados:</label>
+            <input type="file" id="estado_resultados" name="estado_resultados"><br><br>
+
+            <label for="libro_mayor">Libro mayor:</label>
+            <input type="file" id="libro_mayor" name="libro_mayor"><br><br>
+
+            <label for="politicas_internas">Procedimientos y políticas internas:</label>
+            <textarea id="politicas_internas" name="politicas_internas" rows="4" cols="50"></textarea><br><br>
+
+            <label for="cumplimiento_legal">Cumplimiento legal:</label>
+            <input type="checkbox" id="cumplimiento_legal" name="cumplimiento_legal"><br><br>
+
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>

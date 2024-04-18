@@ -1,0 +1,136 @@
+{
+	"data": [
+		{
+			"id": "1000",
+			"code": "f230fh0g3",
+			"name": "Computadora Portátil",
+			"description": "Descripción del Producto",
+			"image": "computadora-portatil.jpg",
+			"marca": "MarcaA",
+			"category": "equipos y dispositivos electrónicos",
+			"quantity": 24,
+			"garantia_proveedor": "ACTIVE",
+			"fecha_adquisicion": "2023-05-10",
+			"insuranceStatus": "ACTIVE"
+		},
+		{
+		  "id": "1001",
+		  "code": "nvklal433",
+		  "name": "Proyector",
+		  "description": "Descripción del Producto",
+		  "image": "proyector.jpg",
+		  "marca": "MarcaB",
+		  "category": "equipos y dispositivos electrónicos",
+		  "quantity": 61,
+		  "garantia_proveedor": "INACTIVE",
+		  "fecha_adquisicion": "2022-12-15",
+		  "insuranceStatus": "ACTIVE"
+		},
+		{
+		  "id": "1002",
+		  "code": "zz21cz3c1",
+		  "name": "Pizarras Interactivas",
+		  "description": "Descripción del Producto",
+		  "image": "pizarras-interactivas.jpg",
+		  "marca": "MarcaC",
+		  "category": "equipos y dispositivos electrónicos",
+		  "quantity": 2,
+		  "garantia_proveedor": "ACTIVE",
+		  "fecha_adquisicion": "2023-08-20",
+		  "insuranceStatus": "INACTIVE"
+		},
+		{
+		  "id": "1003",
+		  "code": "244wgerg2",
+		  "name": "Libro de Texto",
+		  "description": "Descripción del Producto",
+		  "image": "libro-de-texto.jpg",
+		  "marca": "MarcaD",
+		  "category": "material de enseñanza",
+		  "quantity": 25,
+		  "garantia_proveedor": "ACTIVE",
+		  "fecha_adquisicion": "2023-01-05",
+		  "insuranceStatus": "ACTIVE"
+		},
+		{
+		  "id": "1004",
+		  "code": "h456wer53",
+		  "name": "Pelota de Fútbol",
+		  "description": "Descripción del Producto",
+		  "image": "pelota-de-futbol.jpg",
+		  "marca": "MarcaE",
+		  "category": "equipamiento deportivo",
+		  "quantity": 73,
+		  "garantia_proveedor": "ACTIVE",
+		  "fecha_adquisicion": "2022-11-28",
+		  "insuranceStatus": "ACTIVE"
+		},
+		{
+		  "id": "1005",
+		  "code": "av2231fwg",
+		  "name": "Carpeta",
+		  "description": "Descripción del Producto",
+		  "image": "carpeta.jpg",
+		  "marca": "MarcaF",
+		  "category": "suministros de oficina",
+		  "quantity": 0,
+		  "garantia_proveedor": "INACTIVE",
+		  "fecha_adquisicion": "2023-09-10",
+		  "insuranceStatus": "INACTIVE"
+		},
+		{
+		  "id": "1006",
+		  "code": "bib36pfvm",
+		  "name": "Microscopio",
+		  "description": "Descripción del Producto",
+		  "image": "microscopio.jpg",
+		  "marca": "MarcaG",
+		  "category": "equipo de laboratorio",
+		  "quantity": 5,
+		  "garantia_proveedor": "ACTIVE",
+		  "fecha_adquisicion": "2023-03-17",
+		  "insuranceStatus": "ACTIVE"
+		},
+		{
+		  "id": "1007",
+		  "code": "mbvjkgip5",
+		  "name": "Extintor",
+		  "description": "Descripción del Producto",
+		  "image": "extintor.jpg",
+		  "marca": "MarcaH",
+		  "category": "suministros de limpieza y mantenimiento",
+		  "quantity": 23,
+		  "garantia_proveedor": "ACTIVE",
+		  "fecha_adquisicion": "2023-07-02",
+		  "insuranceStatus": "ACTIVE"
+		},
+		{
+		  "id": "1008",
+		  "code": "vbb124btr",
+		  "name": "Impresora",
+		  "description": "Descripción del Producto",
+		  "image": "impresora.jpg",
+		  "marca": "MarcaI",
+		  "category": "equipos y dispositivos electrónicos",
+		  "quantity": 2,
+		  "garantia_proveedor": "ACTIVE",
+		  "fecha_adquisicion": "2022-10-30",
+		  "insuranceStatus": "ACTIVE"
+		},
+		{
+		  "id": "1009",
+		  "code": "cm230f032",
+		  "name": "Tablet",
+		  "description": "Descripción del Producto",
+		  "image": "tablet.jpg",
+		  "marca": "MarcaJ",
+		  "category": "equipos y dispositivos electrónicos",
+		  "quantity": 63,
+		  "garantia_proveedor": "ACTIVE",
+		  "fecha_adquisicion": "2023-04-15",
+		  "insuranceStatus": "ACTIVE"
+		}
+			
+	]
+}
+
